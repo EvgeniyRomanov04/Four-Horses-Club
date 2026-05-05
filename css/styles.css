@@ -1,0 +1,13 @@
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+p,
+h1,
+h2,
+a {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
