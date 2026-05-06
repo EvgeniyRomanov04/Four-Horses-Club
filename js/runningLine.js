@@ -36,6 +36,7 @@ class RunningLine {
     mountModule() {
         const container = document.createElement('div');
         container.className = RunningLine.containerClassName;
+        container.id = RunningLine.id;
         const text = document.createElement('span');
         text.className = RunningLine.textClassName;
         text.innerText = this.currentText
