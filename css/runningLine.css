@@ -1,0 +1,12 @@
+#runningLine {
+  overflow: hidden;
+  text-wrap: nowrap;
+}
+/*Контейнер управления модулем*/
+.running-line-container {
+  display: flex;
+  flex-direction: row;
+}
+.running-line-text {
+  text-wrap: nowrap;
+}

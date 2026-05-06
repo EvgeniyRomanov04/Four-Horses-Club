@@ -1,13 +1,65 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Four Horses Club</title>
-</head>
-<body>
-    
-</body>
-<script src="./js/register.js"></script>
-<script src="./js/runningLine.js"></script>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/runningLine.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <svg class="header__icon">
+        <use href="sprite.svg#icon-horse"></use>
+      </svg>
+      <svg class="header__icon">
+        <use href="sprite.svg#icon-horse"></use>
+      </svg>
+      <svg class="header__icon">
+        <use href="sprite.svg#icon-horse"></use>
+      </svg>
+      <svg class="header__icon">
+        <use href="sprite.svg#icon-horse"></use>
+      </svg>
+      <h1 class="header__text">Клуб<br />четырех коней</h1>
+    </header>
+    <main>
+      <section class="hero">
+        <h2 class="hero__title">
+          Превратите <br />уездный город <br />
+          <p class="hero__title__second">в столицу</p>
+          <p class="hero__title__third">земного шара</p>
+        </h2>
+        <p class="hero__text">
+          Оплатите взнос на телеграммы для организации Международного
+          васюкинского турнира по шахматам
+        </p>
+        <div class="hero__buttons">
+          <button class="hero__button">Поддержать шахматную мысль</button>
+          <button class="hero__button variant-1">Подробнее о турнире</button>
+        </div>
+        <img class="hero__background" />
+        <img class="hero__background_l" />
+        <div
+          class="running-line-container running-line-text"
+          id="runningLine"
+          data-delay="1000"
+        >
+          Дело помощи утопающим — дело рук самих утопающих! • Шахматы двигают
+          вперед не только культуру, но и экономику! • Лед тронулся, господа
+          присяжные заседатели!
+        </div>
+      </section>
+    </main>
+  </body>
+  <script src="./js/register.js"></script>
+  <script src="./js/utils.js"></script>
+  <script src="./js/runningLine.js"></script>
 </html>
