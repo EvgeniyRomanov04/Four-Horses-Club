@@ -37,7 +37,13 @@ class Controller extends EventEmitter {
 
     setCounter(count) {
         if (this.counterType === 'dots') this._shiftCounter(this._count, count)
+        if (this.counterType === 'count') this._updateCounterValue(count)
         this._count = count
+    }
+
+    _updateCounterValue(count) {
+        const counter = this.target.querySelector(`#${Controller.counterId}`)
+        counter.innerHTML = count
     }
 
     _shiftCounter(prev, count) {

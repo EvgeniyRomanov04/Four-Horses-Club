@@ -66,7 +66,7 @@ class Carousel {
             this.target.scrollTo({ left: offsetY })
         }
 
-        this._controller.setCounter(originalIndex + 1 - (this.infinityEnadled ? this.this.duplicateCount : 0))
+        if (this._controller) this._controller.setCounter(originalIndex + 1 - (this.infinityEnadled ? this.duplicateCount : 0))
     }
 
     updateItemRects(element) {
@@ -90,6 +90,7 @@ class Carousel {
     }
 
     startInitInfinityScroll() {
+        if (!this.infinityEnadled) return
         this._infinityInterval = setInterval(() => {
             if (this.scrolling) return;
             const children = Array.from(this.target.children);

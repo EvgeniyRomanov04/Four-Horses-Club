@@ -43,8 +43,8 @@
           васюкинского турнира по шахматам
         </p>
         <div class="hero__buttons">
-          <button class="hero__button">Поддержать шахматную мысль</button>
-          <button class="hero__button variant-1">Подробнее о турнире</button>
+          <a href="#invitation" class="hero__button">Поддержать шахматную мысль</button>
+          <a href="#party" class="hero__button variant-1">Подробнее о турнире</button>
         </div>
         <img class="hero__background" />
         <img class="hero__background_l" />
@@ -58,7 +58,7 @@
           присяжные заседатели!
         </div>
       </section>
-      <section class="invitation">
+      <section class="invitation" id="invitation">
         <div class="container">
           <h3 class="invitation__title">
             Чтобы поддержать Международный васюкинский турнир
@@ -246,7 +246,122 @@
           </div>
         </div>
       </section>
+      <section class="party" id="party">
+        <div class="container">
+          <h2>Участники турнира</h2>
+        </div>
+        <div
+          class="party__carousel__container"
+          id="carousel"
+          data-infinity="true"
+        >
+          <article class="carousel__item container">
+            <img
+              src="./assets/images/participant.png"
+              alt="силует шахматиста"
+              class="party__carousel__item__image"
+            />
+            <h4 class="party__carousel__item__name">Хозе-Рауль Капабланка</h4>
+            <p class="party__carousel__item__dignity">
+              Чемпион мира по шахматам
+            </p>
+            <button class="party__carousel__item__btn">Подробнее</button>
+          </article>
+          <article class="carousel__item container">
+            <img
+              src="./assets/images/participant.png"
+              alt="силует шахматиста"
+              class="party__carousel__item__image"
+            />
+            <h4 class="party__carousel__item__name">Эммануил Ласкер</h4>
+            <p class="party__carousel__item__dignity">
+              Чемпион мира по шахматам
+            </p>
+            <button class="party__carousel__item__btn">Подробнее</button>
+          </article>
+          <article class="carousel__item container">
+            <img
+              src="./assets/images/participant.png"
+              alt="силует шахматиста"
+              class="party__carousel__item__image"
+            />
+            <h4 class="party__carousel__item__name">Александр Алехин</h4>
+            <p class="party__carousel__item__dignity">
+              Чемпион мира по шахматам
+            </p>
+            <button class="party__carousel__item__btn">Подробнее</button>
+          </article>
+          <article class="carousel__item container">
+            <img
+              src="./assets/images/participant.png"
+              alt="силует шахматиста"
+              class="party__carousel__item__image"
+            />
+            <h4 class="party__carousel__item__name">Арон Нимцович</h4>
+            <p class="party__carousel__item__dignity">
+              Чемпион мира по шахматам
+            </p>
+            <button class="party__carousel__item__btn">Подробнее</button>
+          </article>
+          <article class="carousel__item container">
+            <img
+              src="./assets/images/participant.png"
+              alt="силует шахматиста"
+              class="party__carousel__item__image"
+            />
+            <h4 class="party__carousel__item__name">Рихард Рети</h4>
+            <p class="party__carousel__item__dignity">
+              Чемпион мира по шахматам
+            </p>
+            <button class="party__carousel__item__btn">Подробнее</button>
+          </article>
+          <article class="carousel__item container">
+            <img
+              src="./assets/images/participant.png"
+              alt="силует шахматиста"
+              class="party__carousel__item__image"
+            />
+            <h4 class="party__carousel__item__name">Остап Бендер</h4>
+            <p class="party__carousel__item__dignity">
+              Чемпион мира по шахматам
+            </p>
+            <button class="party__carousel__item__btn">Подробнее</button>
+          </article>
+        </div>
+        <div class="carousel__controll" id="controller" data-type="count">
+          <button class="carousel__controll__btn prev">
+            <svg class="carousel__controll__btn__svg">
+              <use href="sprite.svg#icon-arrow"></use>
+            </svg>
+          </button>
+          <div class="party__carousel__counter__container">
+            <span id="controllerCounter">1</span
+            ><span class="party__carousel__counter__text">/6</span>
+          </div>
+          <button class="carousel__controll__btn next">
+            <svg class="carousel__controll__btn__svg">
+              <use href="sprite.svg#icon-arrow"></use>
+            </svg>
+          </button>
+        </div>
+      </section>
     </main>
+    <footer class="footer">
+      <div
+        class="running-line-container running-line-text"
+        id="runningLine"
+        data-delay="1000"
+      >
+        Дело помощи утопающим — дело рук самих утопающих! • Шахматы двигают
+        вперед не только культуру, но и экономику! • Лед тронулся, господа
+        присяжные заседатели!
+      </div>
+      <p class="footer__text">
+        Все персонажи, события и цитаты являются вымышленными и не принадлежат
+        создателям сайта. С подробностями можно познакомиться в главе XXXIV
+        романа Ильи Ильфа и Евгения Петрова «Двенадцать стульев».
+      </p>
+    </footer>
   </body>
   <script src="./js/register.js"></script>
   <script src="./js/utils.js"></script>
