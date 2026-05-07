@@ -1,9 +1,8 @@
 /**
  * Модуль бегущих строк
  * Настройка через data атрибут
- * translate-x: значение сдвига Number
- * speed: скорость в px сдвига на кадр Number
- * delay: задержка между итерациями Number
+ * @param speed: скорость в px сдвига на кадр Number
+ * @param delay: задержка между итерациями Number
  */
 
 class RunningLine {
@@ -13,6 +12,7 @@ class RunningLine {
     renderElement;
     speed = 0.5;
     delay = 0;
+    translateX = 0;
 
     static id = 'runningLine'
     static containerClassName = 'running-line-container'
@@ -41,7 +41,10 @@ class RunningLine {
         text.className = RunningLine.textClassName;
         text.innerText = this.currentText
 
-        container.append(text, text.cloneNode(true));
+        const duplicateText = text.cloneNode(true)
+        duplicateText.ariaHidden = true
+
+        container.append(text, duplicateText);
 
         this.parent.replaceChild(container, this.target)
         this.renderElement = container;
@@ -63,10 +66,11 @@ class RunningLine {
                 })
                 detained = false
             }
-            const x = (container.dataset.translateX || 0) - this.speed;
+            const x = (this.translateX || 0) - this.speed;
             const shouldRestart = Math.abs(x) >= itemWidth;
             if (shouldRestart) detained = true;
-            container.dataset.translateX = shouldRestart ? 0 : x;
+            this.translateX = shouldRestart ? 0 : x;
+            // container.dataset.translateX = shouldRestart ? 0 : x;
 
             for (const item of items) {
                 item.style.transform = shouldRestart ? '' : `translateX(${x}px)`

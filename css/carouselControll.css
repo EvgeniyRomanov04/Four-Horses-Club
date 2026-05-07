@@ -1,0 +1,56 @@
+/* Carousel Controll Module */
+.carousel__controll {
+  display: flex;
+  flex-direction: row;
+  column-gap: 16px;
+  justify-content: center;
+  margin: 28px 0 0;
+}
+.carousel__controll__btn {
+  width: 36px;
+  height: 36px;
+  background-color: var(--color-text-primal);
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 300ms ease;
+}
+
+.carousel__controll__btn:active {
+  transform: scale(0.8);
+}
+
+.carousel__controll__btn.prev {
+  transform: rotate(-180deg);
+}
+.carousel__controll__btn.prev:active {
+  transform: rotate(-180deg) scale(0.8);
+}
+.carousel__controll__btn.next {
+}
+.carousel__controll__pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 6px;
+}
+.carousel__controll__pagination__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transition: transform 300ms ease, background-color 300ms ease;
+  background-color: #d9d9d9;
+  transform: scale(0.8);
+}
+
+.carousel__controll__pagination__dot.active {
+  background-color: var(--color-text-primal);
+  transform: scale(1);
+}
+
+.carousel__controll__btn__svg {
+  width: 9px;
+  height: 17px;
+}

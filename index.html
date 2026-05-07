@@ -6,11 +6,12 @@
     <title>Four Horses Club</title>
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/runningLine.css" />
+    <link rel="stylesheet" href="./css/carouselControll.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&divplay=swap"
       rel="stylesheet"
     />
   </head>
@@ -57,9 +58,199 @@
           присяжные заседатели!
         </div>
       </section>
+      <section class="invitation">
+        <div class="container">
+          <h3 class="invitation__title">
+            Чтобы поддержать Международный васюкинский турнир
+          </h3>
+          <img
+            src="./assets/images/chess_tournament.png"
+            alt="турнир гроссмейстеров"
+            class="invitation__image-1"
+          />
+          <h3 class="invitation__title">посетите лекцию на тему:</h3>
+          <h3 class="invitation__title highlighted">
+            «Плодотворная дебютная идея»
+          </h3>
+        </div>
+        <img
+          src="./assets/images/grandmaster.jpg"
+          alt="гроссмейстер за шахматной доской"
+          class="invitation__image-2"
+        />
+        <div class="container">
+          <h3 class="invitation__title">и Сеанс</h3>
+          <h3 class="invitation__title highlighted">
+            одновременной игры в шахматы на 160 досках
+          </h3>
+          <h3 class="invitation__title">гроссмейстера О. Бендера</h3>
+        </div>
+        <dl class="container invitation__info">
+          <div class="invitation__info__item">
+            <dt>Место проведения:</dt>
+            <dd>Клуб «Картонажник»</dd>
+          </div>
+          <div class="invitation__info__item">
+            <dt>Дата и время мероприятия:</dt>
+            <dd>22 июня 1927 г. в 18:00</dd>
+          </div>
+          <div class="invitation__info__item">
+            <dt>Стоимость входных билетов:</dt>
+            <dd>20 коп.</dd>
+          </div>
+          <div class="invitation__info__item inline">
+            <dt>Плата за игру:</dt>
+            <dd>50 коп.</dd>
+          </div>
+          <div class="invitation__info__item">
+            <dt>Взнос на телеграммы:</dt>
+            <dd>
+              <span class="strikethrough">100 руб. </span>&nbsp;21 руб. 16 коп.
+            </dd>
+          </div>
+        </dl>
+        <div class="container">
+          <a href="#" class="link"
+            >По всем вопросам обращаться в администрацию к К. Михельсону</a
+          >
+        </div>
+      </section>
+      <section class="stages">
+        <div class="container">
+          <h2 class="stages__title">Этапы преображения Васюков</h2>
+          <a href="#" class="link">Будущие источники обогащения васюкинц</a>
+        </div>
+        <div class="stages__carousel__wrapper">
+          <div class="container">
+            <img
+              src="/assets/images/biplane.png"
+              alt="винтовой биплан начала 1930-х"
+              class="stages__image"
+            />
+          </div>
+          <div class="carousel__container" id="carousel" data-infinity="true">
+            <!-- Item -->
+            <div class="carousel__item">
+              <div class="stages__carousel__item__content with-rough-back">
+                <div class="stages__carousel__item__flex with-cooper-back">
+                  <!-- Row -->
+                  <div class="stages__carousel__item__row">
+                    <div class="stages__carousel__item__index">
+                      <span> 1 </span>
+                    </div>
+                    <span class="stages__carousel__item__text"
+                      >Строительство железнодорожной магистрали Москва-Васюки
+                    </span>
+                  </div>
+                  <div class="stages__carousel__item__row">
+                    <div class="stages__carousel__item__index">
+                      <span> 2 </span>
+                    </div>
+                    <span class="stages__carousel__item__text"
+                      >Открытие фешенебельной гостиницы «Проходная пешка» и
+                      других небоскрёбов
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel__item">
+              <div class="stages__carousel__item__content with-rough-back">
+                <div class="stages__carousel__item__flex with-cooper-back">
+                  <div class="stages__carousel__item__row">
+                    <div class="stages__carousel__item__index">
+                      <span> 3 </span>
+                    </div>
+                    <span class="stages__carousel__item__text"
+                      >Поднятие сельского хозяйства в радиусе на тысячу
+                      километров: производство овощей, фруктов, икры, шоколадных
+                      конфет
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel__item">
+              <div class="stages__carousel__item__content with-rough-back">
+                <div class="stages__carousel__item__flex with-cooper-back">
+                  <div class="stages__carousel__item__row">
+                    <div class="stages__carousel__item__index">
+                      <span> 4 </span>
+                    </div>
+                    <span class="stages__carousel__item__text">
+                      Поднятие сельского хозяйства в радиусе на тысячу
+                    </span>
+                  </div>
+                  <div class="stages__carousel__item__row">
+                    <div class="stages__carousel__item__index">
+                      <span> 5 </span>
+                    </div>
+                    <span class="stages__carousel__item__text">
+                      Размещение гаражей для гостевого автотранспорта
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel__item">
+              <div class="stages__carousel__item__content with-rough-back">
+                <div class="stages__carousel__item__flex with-cooper-back">
+                  <div class="stages__carousel__item__row">
+                    <div class="stages__carousel__item__index">
+                      <span> 6 </span>
+                    </div>
+                    <span class="stages__carousel__item__text">
+                      Постройка сверхмощной радиостанции для передачи всему миру
+                      сенсационных результатов
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel__item">
+              <div class="stages__carousel__item__content with-rough-back">
+                <div class="stages__carousel__item__flex with-cooper-back">
+                  <div class="stages__carousel__item__row">
+                    <div class="stages__carousel__item__index">
+                      <span> 7 </span>
+                    </div>
+                    <span class="stages__carousel__item__text">
+                      Создание аэропорта «Большие Васюки» с регулярным
+                      отправлением почтовых самолётов и дирижаблей во все концы
+                      света, включая Лос-Анжелос и Мельбурн
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel__controll" id="controller" data-type="dots">
+            <button class="carousel__controll__btn prev">
+              <svg class="carousel__controll__btn__svg">
+                <use href="sprite.svg#icon-arrow"></use>
+              </svg>
+            </button>
+            <div class="carousel__controll__pagination" id="controllerCounter">
+              <div class="carousel__controll__pagination__dot"></div>
+              <div class="carousel__controll__pagination__dot"></div>
+              <div class="carousel__controll__pagination__dot active"></div>
+              <div class="carousel__controll__pagination__dot"></div>
+              <div class="carousel__controll__pagination__dot"></div>
+            </div>
+            <button class="carousel__controll__btn next">
+              <svg class="carousel__controll__btn__svg">
+                <use href="sprite.svg#icon-arrow"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
     </main>
   </body>
   <script src="./js/register.js"></script>
   <script src="./js/utils.js"></script>
   <script src="./js/runningLine.js"></script>
+  <script src="./js/controller.js"></script>
+  <script src="./js/carousel.js"></script>
 </html>
