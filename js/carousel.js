@@ -13,6 +13,7 @@ class Carousel {
     _currentIndex = 0;
     _scrolling = false;
 
+    infinityEnadled = false;
     infinityDelay = 4000;
     duplicateCount = 4;
     _infinityInterval;
@@ -34,6 +35,9 @@ class Carousel {
         this._controller = controller
         this._controller.on('next', () => this.scrollToRelativeByCount(1))
         this._controller.on('prev', () => this.scrollToRelativeByCount(-1))
+
+
+        this._controller.setCounter(this._currentIndex + 1)
     }
 
     onScroll(event) {
@@ -62,7 +66,7 @@ class Carousel {
             this.target.scrollTo({ left: offsetY })
         }
 
-        this._controller.setCounter(originalIndex + 1 - this.duplicateCount)
+        this._controller.setCounter(originalIndex + 1 - (this.infinityEnadled ? this.this.duplicateCount : 0))
     }
 
     updateItemRects(element) {
@@ -73,6 +77,7 @@ class Carousel {
 
     initInfinityScroll(element) {
         const isInfinity = element.dataset.infinity === 'true';
+        this.infinityEnadled = isInfinity;
         if (!isInfinity) return;
         const children = Array.from(this.target.children);
         const start = this.createDuplicate(children.slice(0, this.duplicateCount), this.target);
