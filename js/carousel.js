@@ -10,12 +10,13 @@ class Carousel {
 
     target;
     rectMap = []
-    _currentIndex = 0;
+    _currentIndexes = [];
+    _prevVisibledIndexes = []
     _scrolling = false;
 
     infinityEnadled = false;
     infinityDelay = 4000;
-    duplicateCount = 4;
+    duplicateCount = 5;
     _infinityInterval;
 
     _controller;
@@ -37,36 +38,59 @@ class Carousel {
         this._controller.on('prev', () => this.scrollToRelativeByCount(-1))
 
 
-        this._controller.setCounter(this._currentIndex + 1)
+        this.updateCounter()
     }
 
     onScroll(event) {
         this.scrolling = true
-        const shiftToCenter = this.rectMap[0].left;
-        const offsetY = this.target.scrollLeft + shiftToCenter;
-        const offsetRight = offsetY + this.target.clientWidth;
-        const newIndex = this.rectMap.findIndex(rect => rect.left <= offsetY && rect.right === offsetRight)
-        if (newIndex === -1) return
-        this.currentIndex = newIndex;
+        const indexes = this.getVisibledItems()
+
+        this.currentIndexes = indexes;
+        indexes.length === 1 && this.updateCounter()
     }
 
     onScrollEnd(event) {
         this.scrolling = false;
         const children = Array.from(this.target.children);
-        const centerItem = children[this._currentIndex]
+        const visibledItems = this.currentIndexes.map(i => children[i])
 
-        const isDuplicate = centerItem.dataset.duplicate === 'true'
-        var originalIndex = this._currentIndex
+        const targetItem = visibledItems[0]
+        const isDuplicate = targetItem.dataset.duplicate === 'true'
+        var originalIndex = this.currentIndexes[0]
 
         if (isDuplicate) {
-            originalIndex = centerItem.dataset.originalIndex
+            originalIndex = targetItem.dataset.originalIndex
             const duplicateParent = children.filter(el => el.dataset.duplicate !== 'true')[originalIndex];
-            const offsetY = duplicateParent.offsetLeft;
+            const targetOffsetX = this.target.offsetLeft;
+            const offsetX = duplicateParent.offsetLeft - targetOffsetX;
 
-            this.target.scrollTo({ left: offsetY })
+            this.target.scrollTo({ left: offsetX })
         }
 
-        if (this._controller) this._controller.setCounter(originalIndex + 1 - (this.infinityEnadled ? this.duplicateCount : 0))
+        this.updateCounter()
+    }
+
+    updateCounter() {
+        const vIndexes = this.getVisibledItems();
+        const children = Array.from(this.target.children);
+        const visibledItems = vIndexes.map(i => children[i])
+
+        const targetItem = visibledItems[0]
+        if (!targetItem) return
+        const isDuplicate = targetItem.dataset.duplicate === 'true'
+        var originalIndex = vIndexes[0]
+
+        if (isDuplicate) {
+            originalIndex = +targetItem.dataset.originalIndex
+        }
+
+        if (this._controller && vIndexes.length) this._controller.setCounter(vIndexes.length > 1 ? vIndexes.length : (originalIndex + 1 - ((!isDuplicate && this.infinityEnadled) ? this.duplicateCount : 0)))
+
+        const isStart = vIndexes[0] === 0;
+        const isEnd = vIndexes[vIndexes.length - 1] === (children.length - 1)
+
+        this._controller.disablePrev(isStart);
+        this._controller.disableNext(isEnd);
     }
 
     updateItemRects(element) {
@@ -94,9 +118,10 @@ class Carousel {
         this._infinityInterval = setInterval(() => {
             if (this.scrolling) return;
             const children = Array.from(this.target.children);
-            const nextElement = children[this._currentIndex + 1]
-            const offsetY = nextElement.offsetLeft;
-            this.target.scrollTo({ left: offsetY, behavior: "smooth", })
+            const lastVisibled = this.currentIndexes[this.currentIndexes.length - 1]
+            const nextElement = children[lastVisibled + 1]
+            const offsetX = nextElement.offsetLeft;
+            this.target.scrollTo({ left: offsetX, behavior: "smooth", })
         }, this.infinityDelay)
     }
 
@@ -116,24 +141,49 @@ class Carousel {
         })
     }
 
-    scrollToRelativeByCount(count) {
-        const children = Array.from(this.target.children)
-        const scrollTarget = children[this._currentIndex + count]
-        const isDuplicate = scrollTarget.dataset.duplicate === 'true'
-        if (!scrollTarget) return;
-        const offsetY = scrollTarget.offsetLeft;
+    getVisibledItems() {
+        const shiftToCenter = this.rectMap[0].left;
+        const offsetX = this.target.scrollLeft + shiftToCenter;
+        const offsetRight = offsetX + this.target.clientWidth;
 
-        this.target.scrollTo({ left: offsetY, behavior: 'smooth' })
+        const prevIndexesEmpty = this._prevVisibledIndexes.length === 0
+        const indexes = []
+
+        for (let i = 0; i < this.rectMap.length; i++) {
+            const rect = this.rectMap[i]
+            if (rect.left >= offsetX && rect.right <= offsetRight) {
+                const target = Array.from(this.target.children)[i]
+                const isDup = target.dataset.duplicate
+                if (!(prevIndexesEmpty && isDup)) indexes.push(i)
+            }
+        }
+        this.currentIndexes = indexes
+        return indexes
     }
 
-    set currentIndex(value) {
-        const prevState = this._currentIndex
-        if (prevState !== value) {
-            this._currentIndex = value
+    scrollToRelativeByCount(count) {
+        const children = Array.from(this.target.children)
+        const isNegative = count < 0;
+        const targetIndex = this.currentIndexes[isNegative ? 0 : this.currentIndexes.length - 1]
+        if (targetIndex === undefined) {
+            return;
+        }
+        const scrollTarget = children[targetIndex + count]
+        const isDuplicate = scrollTarget.dataset.duplicate === 'true'
+        if (!scrollTarget) return;
+        const offsetX = scrollTarget.offsetLeft;
+
+        this.target.scrollTo({ left: offsetX, behavior: 'smooth' })
+    }
+
+    set currentIndexes(value) {
+        this._currentIndexes = value
+        if (value.length) {
+            this._prevVisibledIndexes = value
         }
     }
 
-    get currentIndex() { return this._currentIndex }
+    get currentIndexes() { return this._currentIndexes }
 
     set scrolling(value) {
         this._scrolling = value;
@@ -152,14 +202,17 @@ const carousels = []
 const initCarouselModule = () => {
     const carouselElements = Array.from(document.querySelectorAll(`#${Carousel.id}`));
     for (const item of carouselElements) {
-        //логическая привязка контроллера по разметке, сначала идет карусель, следующим контроллер
-        //в будущем можно сделать конкретную привязку
-        const next = item.nextElementSibling
+        const maxW = item.dataset.maxW
+        if (maxW && window.outerWidth >= maxW) continue
+
+
+        const next = (item.dataset.id && Array.from(document.querySelectorAll(`#${Controller.id}`)).find(el => el.dataset.id === item.dataset.id && el.clientWidth > 0)) || item.nextElementSibling
+        console.log("🚀 ~ initCarouselModule ~ next:", next)
         const nextIsControllerElement = next.id === Controller.id
         const carousel = new Carousel(item, nextIsControllerElement ? new Controller(next) : undefined)
         carousels.push(carousel)
-
     }
+
 }
 
 register(initCarouselModule)

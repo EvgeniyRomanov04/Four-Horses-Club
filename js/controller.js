@@ -41,6 +41,14 @@ class Controller extends EventEmitter {
         this._count = count
     }
 
+    disablePrev(value) {
+        this.prev.disabled = value
+    }
+
+    disableNext(value) {
+        this.next.disabled = value
+    }
+
     _updateCounterValue(count) {
         const counter = this.target.querySelector(`#${Controller.counterId}`)
         counter.innerHTML = count

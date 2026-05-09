@@ -1,6 +1,5 @@
 /* Carousel Controll Module */
 .carousel__controll {
-  display: flex;
   flex-direction: row;
   column-gap: 16px;
   justify-content: center;
@@ -18,18 +17,24 @@
   transition: transform 300ms ease;
 }
 
-.carousel__controll__btn:active {
+.carousel__controll__btn:hover {
+  background-color: var(--color-hover);
+}
+
+.carousel__controll__btn:enabled:active {
   transform: scale(0.8);
 }
 
 .carousel__controll__btn.prev {
   transform: rotate(-180deg);
 }
-.carousel__controll__btn.prev:active {
+.carousel__controll__btn.prev:enabled:active {
   transform: rotate(-180deg) scale(0.8);
 }
-.carousel__controll__btn.next {
+.carousel__controll__btn:disabled {
+  background-color: rgba(49, 49, 49, 0.2);
 }
+
 .carousel__controll__pagination {
   display: flex;
   flex-direction: row;

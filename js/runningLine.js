@@ -44,7 +44,7 @@ class RunningLine {
         const duplicateText = text.cloneNode(true)
         duplicateText.ariaHidden = true
 
-        container.append(text, duplicateText);
+        container.append(text, duplicateText, duplicateText.cloneNode(true));
 
         this.parent.replaceChild(container, this.target)
         this.renderElement = container;

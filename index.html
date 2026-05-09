@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Four Horses Club</title>
-    <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/runningLine.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/carouselControll.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,7 +16,7 @@
     />
   </head>
   <body>
-    <header class="header">
+    <header class="header container">
       <svg class="header__icon">
         <use href="sprite.svg#icon-horse"></use>
       </svg>
@@ -65,82 +65,98 @@
         присяжные заседатели!
       </div>
       <section class="invitation" id="invitation">
-        <div class="container">
-          <h3 class="invitation__title">
-            Чтобы поддержать Международный васюкинский турнир
-          </h3>
+        <div class="container invitation__flex">
+          <div>
+            <h3 class="invitation__title">
+              Чтобы поддержать Международный васюкинский турнир
+            </h3>
+            <img
+              src="./assets/images/chess_tournament.png"
+              alt="турнир гроссмейстеров"
+              class="invitation__image-1 mobile-only"
+            />
+            <h3 class="invitation__title">посетите лекцию на тему:</h3>
+            <h3 class="invitation__title highlighted">
+              «Плодотворная дебютная идея»
+            </h3>
+          </div>
           <img
             src="./assets/images/chess_tournament.png"
             alt="турнир гроссмейстеров"
-            class="invitation__image-1"
+            class="invitation__image-1 desktop-only"
           />
-          <h3 class="invitation__title">посетите лекцию на тему:</h3>
-          <h3 class="invitation__title highlighted">
-            «Плодотворная дебютная идея»
-          </h3>
         </div>
-        <img
-          src="./assets/images/grandmaster.jpg"
-          alt="гроссмейстер за шахматной доской"
-          class="invitation__image-2"
-        />
-        <div class="container">
-          <h3 class="invitation__title">и Сеанс</h3>
-          <h3 class="invitation__title highlighted">
-            одновременной игры в шахматы на 160 досках
-          </h3>
-          <h3 class="invitation__title">гроссмейстера О. Бендера</h3>
-        </div>
-        <dl class="container invitation__info">
-          <div class="invitation__info__item">
-            <dt>Место проведения:</dt>
-            <dd>Клуб «Картонажник»</dd>
+        <div class="invitation__grid">
+          <img
+            src="./assets/images/grandmaster.jpg"
+            alt="гроссмейстер за шахматной доской"
+            class="invitation__image-2"
+          />
+          <div class="container invitation__seans">
+            <h3 class="invitation__title">
+              и Сеанс <br class="mobile-only" />
+              <span class="invitation__title highlighted">
+                одновременной игры в шахматы на 160 досках</span
+              >
+              гроссмейстера О. Бендера
+            </h3>
           </div>
-          <div class="invitation__info__item">
-            <dt>Дата и время мероприятия:</dt>
-            <dd>22 июня 1927 г. в 18:00</dd>
-          </div>
-          <div class="invitation__info__item">
-            <dt>Стоимость входных билетов:</dt>
-            <dd>20 коп.</dd>
-          </div>
-          <div class="invitation__info__item inline">
-            <dt>Плата за игру:</dt>
-            <dd>50 коп.</dd>
-          </div>
-          <div class="invitation__info__item">
-            <dt>Взнос на телеграммы:</dt>
-            <dd>
-              <span class="strikethrough">100 руб. </span>&nbsp;21 руб. 16 коп.
-            </dd>
-          </div>
-        </dl>
-        <div class="container">
-          <a href="#" class="link"
-            >По всем вопросам обращаться в администрацию к К. Михельсону</a
-          >
+          <dl class="container invitation__info">
+            <div class="invitation__info__item">
+              <dt>Место проведения:</dt>
+              <dd>Клуб «Картонажник»</dd>
+            </div>
+            <div class="invitation__info__item">
+              <dt>Дата и время мероприятия:</dt>
+              <dd>22 июня 1927 г. в 18:00</dd>
+            </div>
+            <div class="invitation__info__item">
+              <dt>Стоимость входных билетов:</dt>
+              <dd>20 коп.</dd>
+            </div>
+            <div class="invitation__info__item inline">
+              <dt>Плата за игру:</dt>
+              <dd>50 коп.</dd>
+            </div>
+            <div class="invitation__info__item">
+              <dt>Взнос на телеграммы:</dt>
+              <dd>
+                <span class="strikethrough">100 руб. </span>&nbsp;21 руб. 16
+                коп.
+              </dd>
+            </div>
+            <a href="#" class="link"
+              >По всем вопросам обращаться в администрацию к К. Михельсону</a
+            >
+          </dl>
         </div>
       </section>
       <section class="stages">
         <div class="container">
-          <h2 class="stages__title">Этапы преображения Васюков</h2>
-          <a href="#" class="link">Будущие источники обогащения васюкинц</a>
+          <h2 class="stages__title">
+            Этапы преображения<br class="desktop-only" />
+            Васюков
+            <br class="mobile-only" /><a href="#" class="link"
+              >Будущие источники обогащения васюкинц</a
+            >
+          </h2>
         </div>
         <div class="stages__carousel__wrapper">
           <div class="container">
             <img
               src="/assets/images/biplane.png"
               alt="винтовой биплан начала 1930-х"
-              class="stages__image"
+              class="stages__image mobile-only"
             />
           </div>
-          <div class="carousel__container" id="carousel">
+          <div class="carousel__container" id="carousel" data-max-w="1366">
             <!-- Item -->
             <div class="carousel__item">
               <div class="stages__carousel__item__content with-rough-back">
                 <div class="stages__carousel__item__flex with-cooper-back">
                   <!-- Row -->
                   <div class="stages__carousel__item__row">
+                    <div class="with-cooper-back desktop-only"></div>
                     <div class="stages__carousel__item__index">
                       <span> 1 </span>
                     </div>
@@ -149,6 +165,7 @@
                     </span>
                   </div>
                   <div class="stages__carousel__item__row">
+                    <div class="with-cooper-back desktop-only"></div>
                     <div class="stages__carousel__item__index">
                       <span> 2 </span>
                     </div>
@@ -181,6 +198,7 @@
               <div class="stages__carousel__item__content with-rough-back">
                 <div class="stages__carousel__item__flex with-cooper-back">
                   <div class="stages__carousel__item__row">
+                    <div class="with-cooper-back desktop-only"></div>
                     <div class="stages__carousel__item__index">
                       <span> 4 </span>
                     </div>
@@ -189,6 +207,7 @@
                     </span>
                   </div>
                   <div class="stages__carousel__item__row">
+                    <div class="with-cooper-back desktop-only"></div>
                     <div class="stages__carousel__item__index">
                       <span> 5 </span>
                     </div>
@@ -227,11 +246,20 @@
                       света, включая Лос-Анжелос и Мельбурн
                     </span>
                   </div>
+                  <img
+                    src="/assets/images/biplane.png"
+                    alt="винтовой биплан начала 1930-х"
+                    class="stages__image desktop-only"
+                  />
                 </div>
               </div>
             </div>
           </div>
-          <div class="carousel__controll" id="controller" data-type="dots">
+          <div
+            class="carousel__controll mobile-only"
+            id="controller"
+            data-type="dots"
+          >
             <button class="carousel__controll__btn prev">
               <svg class="carousel__controll__btn__svg">
                 <use href="sprite.svg#icon-arrow"></use>
@@ -255,11 +283,33 @@
       <section class="party" id="party">
         <div class="container">
           <h2>Участники турнира</h2>
+          <div
+            class="carousel__controll desktop-only"
+            id="controller"
+            data-type="count"
+            data-id="party"
+          >
+            <button class="carousel__controll__btn prev">
+              <svg class="carousel__controll__btn__svg">
+                <use href="sprite.svg#icon-arrow"></use>
+              </svg>
+            </button>
+            <div class="party__carousel__counter__container">
+              <span id="controllerCounter">1</span
+              ><span class="party__carousel__counter__text">/6</span>
+            </div>
+            <button class="carousel__controll__btn next">
+              <svg class="carousel__controll__btn__svg">
+                <use href="sprite.svg#icon-arrow"></use>
+              </svg>
+            </button>
+          </div>
         </div>
         <div
           class="party__carousel__container"
           id="carousel"
           data-infinity="true"
+          data-id="party"
         >
           <article class="carousel__item container">
             <img
@@ -334,7 +384,11 @@
             <button class="party__carousel__item__btn">Подробнее</button>
           </article>
         </div>
-        <div class="carousel__controll" id="controller" data-type="count">
+        <div
+          class="carousel__controll mobile-only"
+          id="controller"
+          data-type="count"
+        >
           <button class="carousel__controll__btn prev">
             <svg class="carousel__controll__btn__svg">
               <use href="sprite.svg#icon-arrow"></use>
